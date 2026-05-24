@@ -9,7 +9,7 @@ interface FetchNotesResponse {
 const apiClient = axios.create({
   baseURL: "https://notehub-public.goit.study/api",
   headers: {
-    Authorization: `Bearer ${import.meta.env.VITE_NOTEHUB_TOKEN}`,
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
   },
 });
 
@@ -32,3 +32,6 @@ export async function deleteNote(id: string) {
   const { data } = await apiClient.delete<Note>(`/notes/${id}`);
   return data;
 }
+
+//Fetch by Id
+export function fetchNoteById() {}
