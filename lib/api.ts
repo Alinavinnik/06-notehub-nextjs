@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { Note, NewNote } from "../utilits/types/note";
+import { log } from "console";
 
 interface FetchNotesResponse {
   notes: Note[];
@@ -34,4 +35,7 @@ export async function deleteNote(id: string) {
 }
 
 //Fetch by Id
-export function fetchNoteById() {}
+export async function fetchNoteById(id: string) {
+  const { data } = await apiClient.get<Note>(`/notes/${id}`);
+  return data;
+}

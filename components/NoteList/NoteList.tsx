@@ -3,6 +3,7 @@ import type { Note } from "../../utilits/types/note";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteNote } from "../../utilits/services/noteService";
 import { error, success } from "../../utilits/notification/notification";
+import Link from "next/link";
 
 interface NoteListProps {
   notes: Note[];
@@ -31,6 +32,9 @@ export default function NoteList({ notes }: NoteListProps) {
           <p className={css.content}>{note.content}</p>
           <div className={css.footer}>
             <span className={css.tag}>{note.tag}</span>
+            <Link className={css.link} href={`/notes/${note.id}`}>
+              View details
+            </Link>
             <button
               className={css.button}
               onClick={() => onClickDelete(note.id)}
