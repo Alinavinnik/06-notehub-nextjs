@@ -4,7 +4,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import type { NewNote, TypeTag } from "../../utilits/types/note";
 import * as Yup from "yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { error, success } from "../../utilits/notification/notification";
+
 import { createNote } from "../../utilits/services/noteService";
 
 const Schema = Yup.object().shape({
@@ -32,11 +32,9 @@ export default function NoteForm({ closeModal }: NoteFormProps) {
 
   const mutation = useMutation({
     mutationFn: (createdNote: NewNote) => createNote(createdNote),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["notes"] });
-      success("A note has been created!");
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["notes"] });
     },
-    onError: () => error(),
   });
 
   const handleSubmit = (values: NewNote) => {

@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import TanstackProvider from "@/components/TanstackProvider/TanstackProvider";
-import "izitoast/dist/css/iziToast.min.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
