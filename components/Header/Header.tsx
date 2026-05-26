@@ -3,9 +3,9 @@ import css from "./Header.module.css";
 function Header() {
   return (
     <header className={css.header}>
-      <a href="/" aria-label="Home">
+      <Link href="/" aria-label="Home">
         NoteHub
-      </a>
+      </Link>
       <nav aria-label="Main Navigation">
         <ul className={css.navigation}>
           <li>
