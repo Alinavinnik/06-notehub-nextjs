@@ -1,6 +1,5 @@
 "use client";
 import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
 
 export function success(message: string) {
   iziToast.success({
