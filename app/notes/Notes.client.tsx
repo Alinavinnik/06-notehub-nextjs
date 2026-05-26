@@ -23,7 +23,7 @@ export default function Notes() {
   const closeModal = () => setIsOpenModal(false);
 
   //Search note
-  const { data, isSuccess, isError, isLoading } = useQuery({
+  const { data, isError, isLoading } = useQuery({
     queryKey: ["notes", searchQuery, page],
     queryFn: () => fetchNotes(searchQuery, page),
     placeholderData: keepPreviousData,
@@ -40,7 +40,7 @@ export default function Notes() {
     <div className={css.app}>
       <header className={css.toolbar}>
         <SearchBox onChange={onChange} />
-        {isSuccess && totalPages > 1 && (
+        {data && totalPages > 1 && (
           <Pagination
             forcePage={page - 1}
             pageCount={totalPages}
