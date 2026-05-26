@@ -1,25 +1,42 @@
+"use client";
+
 import ReactPaginate from "react-paginate";
+import type { ReactPaginateProps } from "react-paginate";
+
 import css from "./Pagination.module.css";
 
 interface PaginationProps {
   pageCount: number;
-  forcePage: number;
-  onPageChange: (nextPage: number) => void;
+  currentPage: number;
+  onPageChange: (selectedPage: number) => void;
 }
 
-function Pagination({ pageCount, forcePage, onPageChange }: PaginationProps) {
+const Pagination = ({
+  pageCount,
+  currentPage,
+  onPageChange,
+}: PaginationProps) => {
+  if (pageCount <= 1) return null;
+
+  const handlePageClick: ReactPaginateProps["onPageChange"] = (
+    selectedItem,
+  ) => {
+    onPageChange(selectedItem.selected + 1);
+  };
+
   return (
     <ReactPaginate
       pageCount={pageCount}
-      pageRangeDisplayed={5}
+      pageRangeDisplayed={3}
       marginPagesDisplayed={1}
-      onPageChange={({ selected }) => onPageChange(selected + 1)}
-      forcePage={forcePage}
+      onPageChange={handlePageClick}
+      forcePage={currentPage - 1}
       containerClassName={css.pagination}
       activeClassName={css.active}
-      nextLabel="→"
       previousLabel="←"
+      nextLabel="→"
     />
   );
-}
+};
+
 export default Pagination;

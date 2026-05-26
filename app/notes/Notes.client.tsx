@@ -42,8 +42,8 @@ export default function Notes() {
         <SearchBox onChange={onChange} />
         {data && totalPages > 1 && (
           <Pagination
-            forcePage={page - 1}
-            pageCount={totalPages}
+            pageCount={data.totalPages}
+            currentPage={page}
             onPageChange={setPage}
           />
         )}
