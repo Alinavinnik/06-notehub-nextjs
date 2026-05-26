@@ -1,3 +1,4 @@
+import Link from "next/link";
 import css from "./Header.module.css";
 function Header() {
   return (
@@ -8,10 +9,10 @@ function Header() {
       <nav aria-label="Main Navigation">
         <ul className={css.navigation}>
           <li>
-            <a href="/">Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <a href="/notes">Notes</a>
+            <Link href="/notes">Notes</Link>
           </li>
         </ul>
       </nav>
