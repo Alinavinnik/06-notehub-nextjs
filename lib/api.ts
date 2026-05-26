@@ -1,6 +1,5 @@
 import axios from "axios";
 import type { Note, NewNote } from "../utilits/types/note";
-import { log } from "console";
 
 interface FetchNotesResponse {
   notes: Note[];
